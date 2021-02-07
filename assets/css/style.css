@@ -9,5 +9,45 @@
 }
 
 .search-bar {
-    height: 40px
+    height: 100vh;
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(clouds.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*font-family: ;*/
 }
+
+.find-flights {
+    color: #fff;
+    margin-bottom: 40px; /*Might come back to this*/
+    font-size: 45px;
+    letter-spacing: 2px;
+    justify-content: center;
+}
+
+/*.search-field {
+    height: 50px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+}
+
+.origin {
+    width: 400px;
+}
+
+.destination {
+    width: 400px;
+}
+
+.departure {
+    width: 150px;
+}
+
+.arrival-home {
+    width: 150px;
+}*/
