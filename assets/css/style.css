@@ -4,6 +4,12 @@
     color: black;
 }
 
+/*.nav-wrapper2 {
+    background-color: rgb(115, 125, 219);
+    text-emphasis-color: black;
+    color: black;
+}*/
+
 .find-flights {
     font-size: 40px;
 }
@@ -27,6 +33,17 @@
     letter-spacing: 2px;
     justify-content: center;
 }
+
+/* results-background {
+        height: 100vh;
+        background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(clouds.jpg);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+} */
 
 /*.search-field {
     height: 50px;
