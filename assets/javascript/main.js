@@ -1,10 +1,16 @@
 var APIKEY = "1ab5d5fb108148020574fbedf5d8f664";
 document.querySelector(".search-btn").addEventListener("click", function (event) {
 
-    var departureDay = document.querySelector(".departure").value
-    var returnDay = document.querySelector(".arrival-home").value; /* arrival-home */
+    var departureDay = parseInt(moment(document.querySelector(".departure").value, "MM DD YYYY"))
+    //var departureDay = moment(document.querySelector(".departure").value, "MM DD YYYY")
+    //console.log("This is departure day in moment format: " + departureDay.format("YYYY MM DD"))
+    console.log("This is just departure day: " + departureDay)
+    //var departureDay = document.querySelector(".departure").value.moment().format("YYYY-MM-DD");
+    
+    var returnDay = parseInt(moment(document.querySelector(".arrival-home").value, "MM DD YYYY")); 
+    // var returnDay = moment(document.querySelector(".arrival-home").value, "MM-DD-YYYY"); /* arrival-home */
     var departureCity = document.querySelector(".origin").value; /* origin */
-    var arrivalCity = document.querySelector(".destination").value; /* desitnation */
+    var arrivalCity = document.querySelector(".destination").value; /* destination */
     var departureCityCode = generateCityCode(departureCity);
     var arrivalCityCode = generateCityCode(arrivalCity);
     
@@ -25,7 +31,7 @@ document.querySelector(".search-btn").addEventListener("click", function (event)
             console.log(departureDay)
 
             // 1. create html variables that display the data that you are getting back. Ex; var modal= whatever htmal element you want to document.createElement
-            // 2. maybe add somestyling to your var modal? modal.attr("styles"... whatever)
+            // 2. maybe add some styling to your var modal? modal.attr("styles"... whatever)
             // 3. Then append to an html element you already have above. ex: div.append(modal)... that kind of thing...
 
         });
