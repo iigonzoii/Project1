@@ -1,21 +1,34 @@
 var APIKEY = "1ab5d5fb108148020574fbedf5d8f664";
+
 document.querySelector(".search-btn").addEventListener("click", function (event) {
 
-    var departureDay = parseInt(moment(document.querySelector(".departure").value, "MM DD YYYY"))
-    //var departureDay = moment(document.querySelector(".departure").value, "MM DD YYYY")
+    var departureDay = document.querySelector(".departure").value;
+    // var departureDay = parseInt(moment(document.querySelector(".departure").value, "MM DD YYYY"))
+    // var departureDay = moment(document.querySelector(".departure").value, "YYYY-MM-DD")
     //console.log("This is departure day in moment format: " + departureDay.format("YYYY MM DD"))
     console.log("This is just departure day: " + departureDay)
-    //var departureDay = document.querySelector(".departure").value.moment().format("YYYY-MM-DD");
-    
-    var returnDay = parseInt(moment(document.querySelector(".arrival-home").value, "MM DD YYYY")); 
-    // var returnDay = moment(document.querySelector(".arrival-home").value, "MM-DD-YYYY"); /* arrival-home */
+    // var departureDay = document.querySelector(".departure").value.moment().format("YYYY-MM-DD");
+    var returnDay = document.querySelector(".arrival-home").value;
+    // var returnDay = parseInt(moment(document.querySelector(".arrival-home").value, "MM DD YYYY")); 
+    // var returnDay = moment(document.querySelector(".arrival-home").value, "YYYY-MM-DD"); /* arrival-home */
     var departureCity = document.querySelector(".origin").value; /* origin */
     var arrivalCity = document.querySelector(".destination").value; /* destination */
-    var departureCityCode = generateCityCode(departureCity);
-    var arrivalCityCode = generateCityCode(arrivalCity);
-    
-// weatherSearch(arrivalCity)
-    fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/US/USD/en-US/${departureCityCode}/${arrivalCityCode}/${departureDay}?inboundpartialdate=${returnDay}`, {
+    // var departureCityCode = generateCityCode(departureCity);
+    // var arrivalCityCode = generateCityCode(arrivalCity);
+    var departureCityCode = "DEN-sky"
+    var arrivalCityCode = "ORD-sky"
+    // weatherSearch(arrivalCity)
+
+
+    // ---------------------- SKY FETCH
+    var MyUrl = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/US/USD/en-US/${departureCityCode}/${arrivalCityCode}/${departureDay}?inboundpartialdate=${returnDay}`
+
+    // fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/US/USD/en-US/${departureCityCode}/${arrivalCityCode}/${departureDay}?inboundpartialdate=${returnDay}`, {
+
+    // fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/US/USD/en-US/${departureCityCode}/${arrivalCityCode}/${departureDay}`, {
+
+    fetch(MyUrl, {
+
 
         "method": "GET",
         "headers": {
@@ -24,10 +37,18 @@ document.querySelector(".search-btn").addEventListener("click", function (event)
         }
     })
         .then(response => {
-            console.log(response.json());
+            // console.log(response.json());
+            console.log("status", response.status)
+            if (response.status === 200) {
+                return response.json();
+                
+            }
         })
+
         .then(function (data) {
-            data.Quotes[0].DepartureDate ; /* departure */
+            console.log(data)
+            console.log("this is my quotes", data.Quotes)
+            // data.Quotes[0].departuredate ; /* departure */
             console.log(departureDay)
 
             // 1. create html variables that display the data that you are getting back. Ex; var modal= whatever htmal element you want to document.createElement
@@ -39,7 +60,7 @@ document.querySelector(".search-btn").addEventListener("click", function (event)
     //     console.error(err);
     // });
 
-//     fiveDay()
+    //     fiveDay()
 });
 
 
@@ -54,13 +75,13 @@ function generateCityCode(city) {
         headers: myHeaders,
         redirect: 'follow'
     };
-
+// SKY FETCH2------------------------------------
     fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=${city}`, requestOptions)
         .then(response => {
             console.log(response.json());
         })
         .then(function (data) {
-            var cityCode = data.Places[1].PlaceId
+            var cityCode = data.places[1].placeId
             console.log("City code is: " + cityCode)
             return cityCode
 
@@ -108,10 +129,10 @@ function generateCityCode(city) {
 //                 })
 
 //             // document.querySelector("#current-day").innerHTML = ""
-           
+
 //             // var title = document.createElement(`h1`)
 //             // title.innerHTML = data.name
-           
+
 //             // var weatherImg = document.createElement("img")
 //             // weatherImg.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
 
