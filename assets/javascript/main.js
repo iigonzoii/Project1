@@ -50,11 +50,44 @@ document.querySelector(".search-btn").addEventListener("click", function (event)
             console.log("this is my quotes", data.Quotes)
             // data.Quotes[0].departuredate ; /* departure */
             console.log(departureDay)
+            
+            var carrier = data.Carriers[0].Name;
+            console.log("Carrier: ", carrier)
 
+            var iataCodeDep = data.Places[0].IataCode;
+            console.log("Departure Airport IataCode is: ", iataCodeDep)
+
+            var depAirport = data.Places[0].Name;
+            console.log("Departure Airport Name is: ", depAirport)
+
+            var iataCodeArrival = data.Places[1].IataCode;
+            console.log("Arrival Airport IataCode Is: ", iataCodeArrival)
+
+            var destinationAirport = data.Places[1].Name;
+            console.log("Destination Airport Name is: ", destinationAirport)
+
+            var outboundDate = data.Dates.OutboundDates[0].PartialDate;
+            console.log("Outbound Date is: ", outboundDate)
+
+            var price = data.Dates.OutboundDates[0].Price;
+            console.log("Outbound Price Is: ", price)
             // 1. create html variables that display the data that you are getting back. Ex; var modal= whatever htmal element you want to document.createElement
             // 2. maybe add some styling to your var modal? modal.attr("styles"... whatever)
             // 3. Then append to an html element you already have above. ex: div.append(modal)... that kind of thing...
+            document.querySelector(".results-btn").setAttribute("display", "inline")
 
+            var resultsList = document.getElementById("#results-list")
+            var listItem = document.createElement("li")
+            listItem.innerHTML = `
+            <div>
+                <h2><b> Airline: </b>${carrier}</h2>
+                <h3><b>Departs From: </b>${depAirport} (${iataCodeDep})</h3>
+                <h3><b>Arriving To: </b>${destinationAirport} (${iataCodeArrival})</h3>
+                <h3><b>Price: </b>$${price}</h3>
+            </div>
+                `
+            // resultsList.appendChild(listItem)
+            document.getElementById("results-list").appendChild(listItem)
         });
     // .catch(err => {
     //     console.error(err);
