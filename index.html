@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="./assets/css/indexstyle.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
   <title>The World's Best Trip Planner</title>
 </head>
 
@@ -15,21 +15,19 @@
     <div class="nav-wrapper">
       <a href="index.html" class="brand-logo">The World's Best Trip Planner</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="./assets/html/aboutus.html">About Us</a></li>
-        <li><a href="./assets/html/contactus.html">Contact Us</a></li>
-        <li><a href="./assets/html/employment.html">Employment Opportunities</a></li>
+        <li><a href="./assets/html/aboutus.html" target="_blank">About Us</a></li>
+        <li><a href="./assets/html/contactus.html" target="_blank">Contact Us</a></li>
+        <li><a href="./assets/html/employment.html" target="_blank">Employment Opportunities</a></li>
       </ul>
     </div>
   </nav>
   <container>
     <div class="search-bar">
       <form>
-        <h1 class="find-flights">Find Flights...</h1>
+        <h1 class="find-flights">Find the Cheapest Flights & the Best Weather!</h1>
         <div class="form-box">
           <input type="text" class="origin search-field" placeholder="Where are you coming from?">
           <input type="text" class="destination search-field" placeholder="Where Are You Going?">
-          <!--<input type="date" value="yyyy-MM-dd" placeholder="yyyy-mm-dd" class="departure search-field">
-                    <input type="date" value="yyyy-MM-dd" placeholder="yyyy-mm-dd" class="arrival-home search-field">-->
           <input type="text" value="" placeholder="yyyy-mm-dd" class="departure search-field">
           <input type="text" value="" placeholder="yyyy-mm-dd" class="arrival-home search-field">
           <button class="search-btn btn" type="button">Search!</button>
@@ -43,17 +41,8 @@
 
       </ul>
     </div>
-    <div id="weather-results" class="row">
-
-    </div>
+    <div id="weather-results" class="row"></div>
     <div id="modal1" class="modal">
-      <div class="modal-content">
-        <!-- JS landing pad -->
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-      </div>
-    </div>
   </container>
 
   <script src="./assets/javascript/main.js"></script>
