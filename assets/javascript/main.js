@@ -17,7 +17,7 @@ document.querySelector(".search-btn").addEventListener("click", function (event)
     // var arrivalCityCode = generateCityCode(arrivalCity);
     var departureCityCode = "DEN-sky"
     var arrivalCityCode = "ORD-sky"
-    // weatherSearch(arrivalCity)
+    weatherSearch(arrivalCity)
 
 
     // ---------------------- SKY FETCH
@@ -41,7 +41,7 @@ document.querySelector(".search-btn").addEventListener("click", function (event)
             console.log("status", response.status)
             if (response.status === 200) {
                 return response.json();
-                
+
             }
         })
 
@@ -50,7 +50,7 @@ document.querySelector(".search-btn").addEventListener("click", function (event)
             console.log("this is my quotes", data.Quotes)
             // data.Quotes[0].departuredate ; /* departure */
             console.log(departureDay)
-            
+
             var carrier = data.Carriers[0].Name;
             console.log("Carrier: ", carrier)
 
@@ -108,7 +108,7 @@ function generateCityCode(city) {
         headers: myHeaders,
         redirect: 'follow'
     };
-// SKY FETCH2------------------------------------
+    // SKY FETCH2------------------------------------
     fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=${city}`, requestOptions)
         .then(response => {
             console.log(response.json());
@@ -124,74 +124,81 @@ function generateCityCode(city) {
 }
 
 // functioin that will call our five day forecast
-// function weatherSearch(arrivalCity) {
+function weatherSearch(arrivalCity) {
 
-//     var apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${arrivalCity}&units=imperial&appid=${APIKEY}`;
-//     fetch(apiUrl)
-//         .then(function (response) {
-//             if (response.ok) {
-//                 return response.json()
-//             } else {
-//                 alert(`error: ${response.statusTest}`)
-//             }
-//         })
-//         .then(function (data) {
+    var apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${arrivalCity}&units=imperial&appid=${APIKEY}`;
+    console.log(apiUrl)
+    fetch(apiUrl)
+        .then(function (response) {
+            if (response.ok) {
+                return response.json()
+            } else {
+                alert(`error: ${response.statusTest}`)
+            }
+        })
+        .then(function (data) {
 
-//             var longitude = data.coord.lon
-//             var latitude = data.coord.lat
-//             var apiurl2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIKEY}`
-//             fetch(apiurl2)
-//                 .then(function (response2) {
-//                     if (response2.ok) {
-//                         return response2.json()
-//                     } else {
-//                         alert(`error: ${response2.statusTest}`)
-//                     }
-//                 })
-//                 .then(function (data2) {
-//                     // document.querySelector(".modal-content").innerHTML = ""
-//                     for (let i = 1; i < 6; i++) {
-//                         var day = document.createElement('div')
-//                         day.innerHTML = `
-//                         <p>Temperature: ${data2.daily[i].temp.day} F°</p>                
-//                         <img src="http://openweathermap.org/img/wn/${data2.daily[i].weather[0].icon}@2x.png">
-//                         <p>Humidity: ${data2.daily[i].humidity}%</p>
-//                         `
-//                         document.querySelector(".modal-content").appendChild(day)
-//                     }
-//                 })
+            var longitude = data.coord.lon
+            var latitude = data.coord.lat
 
-//             // document.querySelector("#current-day").innerHTML = ""
+            var apiurl2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIKEY}`
+            fetch(apiurl2)
+                .then(function (response2) {
+                    if (response2.ok) {
+                        return response2.json()
+                    } else {
+                        alert(`error: ${response2.statusTest}`)
+                    }
+                })
+                .then(function (data2) {
+                    console.log("weather data", data2)
+                    // document.querySelector(".modal-content").innerHTML = ""
+                    for (let i = 1; i < 6; i++) {
+                        var day = document.createElement('div')
+                        day.innerHTML = `
+                        <div class="col s2">
+                        <div class="card">
+                        <div class="card-image">
+                        <img class="weather-icon" style="background:blue" src="http://openweathermap.org/img/wn/${data2.daily[i].weather[0].icon}@2x.png">
+                        <span class="card-title">Day ${i}</span>
+                        </div>
+                        <div class="card-content" style="width:100%">
+                        <p>Temperature: ${data2.daily[i].temp.day} F°</p> 
+                        <p>Humidity: ${data2.daily[i].humidity}%</p> 
+                        </div>
+                        </div>
+                        </div>
+                        `
+                        // day.innerHTML = `
+                        // <p>Temperature: ${data2.daily[i].temp.day} F°</p>                
+                        // <img src="http://openweathermap.org/img/wn/${data2.daily[i].weather[0].icon}@2x.png">
+                        // <p>Humidity: ${data2.daily[i].humidity}%</p>
+                        // `
+                        document.querySelector("#weather-results").appendChild(day)
+                    }
+                })
+        })
+};
 
-//             // var title = document.createElement(`h1`)
-//             // title.innerHTML = data.name
+ // document.querySelector("#current-day").innerHTML = ""
 
-//             // var weatherImg = document.createElement("img")
-//             // weatherImg.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
+            // var title = document.createElement(`h1`)
+            // title.innerHTML = data.name
 
-//             // var temp = document.createElement("P")
-//             // temp.innerHTML = "Temperature: " + data.main.temp + " F°"
+            // var weatherImg = document.createElement("img")
+            // weatherImg.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
 
-//             // var humidity = document.createElement("P")
-//             // humidity.innerHTML = "Humidity: " + data.main.humidity + "%"
+            // var temp = document.createElement("P")
+            // temp.innerHTML = "Temperature: " + data.main.temp + " F°"
 
-//             // var windSpeed = document.createElement("P")
-//             // windSpeed.innerHTML = "Wind Speed: " + data.wind.speed + " MPH"
+            // var humidity = document.createElement("P")
+            // humidity.innerHTML = "Humidity: " + data.main.humidity + "%"
 
-//             // document.querySelector("#current-day").appendChild(title)
-//             // document.querySelector("#current-day").appendChild(weatherImg)
-//             // document.querySelector("#current-day").appendChild(temp)
-//             // document.querySelector("#current-day").appendChild(humidity)
-//             // document.querySelector("#current-day").appendChild(windSpeed)
-//         })   
+            // var windSpeed = document.createElement("P")
+            // windSpeed.innerHTML = "Wind Speed: " + data.wind.speed + " MPH"
 
-
-// };
-
-
-
-
-// for (var i = 0; i < data.list.length; i++) {
-//     if (data.list[i].dt_txt.indexOf(“15:00:00”) !== -1)
-//     { paste variables for html elements here...}
-//     }
+            // document.querySelector("#current-day").appendChild(title)
+            // document.querySelector("#current-day").appendChild(weatherImg)
+            // document.querySelector("#current-day").appendChild(temp)
+            // document.querySelector("#current-day").appendChild(humidity)
+            // document.querySelector("#current-day").appendChild(windSpeed)
