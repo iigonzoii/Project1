@@ -37,7 +37,14 @@
 
 }
 
-/*contactus.html*/
+.results-btn {
+    background-color: transparent;
+    border: 0px;
+    height: 0px;
+    width: 0px;
+}
+
+/*contactus.html and employment.html forms*/
 
 .contact-background {
     margin:0;
@@ -103,5 +110,64 @@
     margin-top: 8px;
     width: 100%
 }
+
+/*employment.html*/
+
+.employment-background {
+    margin:0;
+    padding: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(clouds.jpg);
+    background-size: cover
+}
+
+/*aboutus.html*/
+
+.aboutus-background {
+    margin:0;
+    padding: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(clouds.jpg);
+    background-size: cover
+}
+
+.about-container {
+    height: 75vh;
+    width: 30%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+}
+
+.about-img {
+    height: 70px;
+    width: 70px;
+    background: url("airplane.jpg")no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.about-container h1 {
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.about-container p {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+}
+
+
+
 
 
