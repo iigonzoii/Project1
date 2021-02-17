@@ -43,11 +43,11 @@ document.querySelector(".search-btn").addEventListener("click", function (event)
             var resultsList = document.getElementById("#results-list")
             var listItem = document.createElement("li")
             listItem.innerHTML = `
-            <div>
-                <h2><b> Airline: </b>${carrier}</h2>
-                <h3><b>Departs From: </b>${depAirport} (${iataCodeDep})</h3>
-                <h3><b>Arriving To: </b>${destinationAirport} (${iataCodeArrival})</h3>
-                <h3><b>Price: </b>$${price}</h3>
+            <div class="flight-results">
+                <P><b> Airline: </b>${carrier}</P>
+                <P><b>Departs From: </b>${depAirport} (${iataCodeDep})</P>
+                <P><b>Arriving To: </b>${destinationAirport} (${iataCodeArrival})</P>
+                <P><b>Price: </b>$${price}</P>
             </div>
                 `
             document.querySelector("#results-list").innerHTML = ""
@@ -81,7 +81,7 @@ function generateCityCode(city) {
 // function that will call our five day forecast
 function weatherSearch(arrivalCity) {
     // here we do our first weather fetch which takes the user input of destination and uses it as the city parameter in our query string.
-    var apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${arrivalCity}&units=imperial&appid=${APIKEY}`;
+    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${arrivalCity}&units=imperial&appid=${APIKEY}`;
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
@@ -108,14 +108,14 @@ function weatherSearch(arrivalCity) {
                 .then(function (data2) {
                     document.querySelector("#weather-results").innerHTML = ""
                     //    here we use a for loop to traverse the object we got from our fetch. this will dynamically display the forecast cards you see on the front end of the application.
-                    for (let i = 1; i < 6; i++) {
+                    for (let i = 0; i < 5; i++) {
                         var day = document.createElement('div')
                         day.innerHTML = `
                         <div class="col s2">
                         <div class="card">
                         <div class="card-image">
-                        <img class="weather-icon" style="background:blue" src="http://openweathermap.org/img/wn/${data2.daily[i].weather[0].icon}@2x.png">
-                        <span class="card-title">Day ${i}</span>
+                        <img class="weather-icon" style="background:blue" src="https://openweathermap.org/img/wn/${data2.daily[i].weather[0].icon}@2x.png">
+                        <span class="card-title" style="padding:10px">Day ${i}</span>
                         </div>
                         <div class="card-content" style="width:100%">
                         <p>Temperature: ${data2.daily[i].temp.day} F°</p> 
