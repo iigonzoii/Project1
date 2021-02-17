@@ -1,23 +1,13 @@
 # Project1
+<img alt="screenshot1of2" src="./assets/css/tp.jpg"> <img alt="screenshot2of2" src="./assets/css/tptwo.jpg">
 
-User Story
+## Description
+The World’s Best Trip Planner is meant for a user who wants to find the cheapest flight available for a particular destination, and the weather of the first 5 days when they get there. Unlike other flight-finding applications (such as Travelocity, Hotels.com, KAYAK, etc.), this is a simplified, ad-free experience. This application does not use a user’s browser history to gauge the prices. The user also needs our application if they want to be prepared for the weather when they arrive to their destination.
+When the user inputs their destination Then SkyScanner, a third-party API, scans hundreds of resources to find the cheapest flight available for the selected dates. When the results for the cheapest flight become viable Then the user is also shown the weather forecast for the first 5 days of their trip starting on the day their flight arrives in their destination city(day 0).
 
-AS A traveler
-I WANT to find a flight
-SO THAT I can get to my destination
-I WANT to find local breweries 
-SO THAT I can enjoy my vacation
+## Technologies used
+We used a mix of html, css, materialize, and javascript for the apperance. Some portions of the application where web api fetches were used to collect data, such as the forecast, are displayed in html dynamically using Javascript. With the dynamic creation and display of the content we needed, if updates were necessary, we could apply them all in one spot instead of having to edit html, css, and Javascript separately.
 
 
-Acceptance Criteria
-
-GIVEN I am a traveler
-WHEN I select my flight criteria (location, date, passengers)
-THEN a list of flights and prices is produced
-WHEN I click on a flight link
-THEN I am redirected to the airline's website
-
-WHEN I search my desitination
-THEN a list of local breweries is presented
-WHEN I click on a brewery link
-THEN I am given more information about the brewery
+## Deployed application
+https://iigonzoii.github.io/Project1/
